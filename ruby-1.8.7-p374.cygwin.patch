@@ -1,0 +1,30 @@
+diff -rc ruby-1.8.7-p371.orig/eval.c ruby-1.8.7-p371/eval.c
+*** ruby-1.8.7-p371.orig/eval.c	2012-06-29 21:31:25.000000000 +0900
+--- ruby-1.8.7-p371/eval.c	2012-10-26 12:46:15.550694800 +0900
+***************
+*** 217,225 ****
+  #  define ruby_setjmp(extra_save, env) \
+       ((extra_save), RUBY_SETJMP(env))
+  #  define ruby_longjmp(env,val) RUBY_LONGJMP(env,val)
+- #  ifdef __CYGWIN__
+- int _setjmp(), _longjmp();
+- #  endif
+  #endif
+  
+  #include <sys/types.h>
+--- 217,222 ----
+diff -rc ruby-1.8.7-p371.orig/gc.c ruby-1.8.7-p371/gc.c
+*** ruby-1.8.7-p371.orig/gc.c	2009-12-24 17:28:08.000000000 +0900
+--- ruby-1.8.7-p371/gc.c	2012-10-26 12:46:34.356770400 +0900
+***************
+*** 39,47 ****
+  
+  #define rb_setjmp(env) RUBY_SETJMP(env)
+  #define rb_jmp_buf rb_jmpbuf_t
+- #ifdef __CYGWIN__
+- int _setjmp(), _longjmp();
+- #endif
+  
+  /* Make alloca work the best possible way.  */
+  #ifdef __GNUC__
+--- 39,44 ----
